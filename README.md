@@ -12,6 +12,8 @@ Title → Get Started → Company setup → Next → Instructions → Start Game
 
 The title, setup, instructions, and gameplay are separate Phaser scenes. The first three use native HTML inside the game area for accessible buttons, labels, and form validation. Gameplay uses the canvas and retains the small top-down truck and driving controls.
 
+The title, setup, and instructions fill the available page-content width. Their height grows with the content, so instructions and form controls use normal page scrolling. Instruction cards adapt their column count to the available space. Gameplay stays centered at up to 960 × 640 pixels, scaling down proportionally on narrower pages. A WordPress theme's surrounding content container still determines the available page width.
+
 Company setup requires a company name, accepts an optional email, and lets the player name three competitors and choose a starting profile. Names are limited to 50 characters. Blank competitors use generic defaults, and Balanced is the default profile. Back buttons preserve entered details.
 
 Setup details stay in memory for this game instance; nothing is submitted or stored in the browser. Email is not displayed in instructions or gameplay. Refreshing starts over. Score saving and the leaderboard remain later steps.
@@ -59,7 +61,7 @@ Supporting files:
 - `src/config/branding.ts` holds the visible title and tagline. Public branding is separate from technical plugin identifiers.
 - `src/config/companyProfiles.ts` contains the four starting profiles and their stats.
 - `src/config/driving.ts` holds the practice speed, 32-unit grid size, and 28-unit truck footprint. Those are game-world measurements; the canvas scales them to fit the page. The footprint is separate from the artwork so later sprite replacements do not change collision size.
-- `src/style.css` makes the canvas fit the page.
+- `src/style.css` gives HTML menus the available page width while keeping the gameplay canvas centered and proportional.
 - `package.json` lists the exact versions of our tools and the commands to run them. `package-lock.json` pins their dependency tree.
 - `vite.config.ts` tells Vite to bundle Phaser and our source into `dist/game.js` and `dist/game.css`.
 - `dist/` contains generated files that WordPress loads. Edit `src/`, then rebuild; do not edit the generated files directly.

@@ -1,20 +1,31 @@
 .superpath-hvac-game {
   width: 100%;
-  max-width: 960px;
+  max-width: none;
   margin-inline: auto;
 }
 
 .superpath-hvac-game__canvas {
   position: relative;
   width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
   aspect-ratio: 3 / 2;
   overflow: hidden;
   background: #0f172a;
   border-radius: 12px;
 }
 
+.superpath-hvac-game__canvas--menu {
+  max-width: none;
+  aspect-ratio: auto;
+}
+
 .superpath-hvac-game__canvas canvas {
   display: block;
+}
+
+.superpath-hvac-game__canvas--menu canvas {
+  display: none;
 }
 
 .superpath-hvac-game__canvas canvas:focus {
@@ -29,10 +40,9 @@
 }
 
 .superpath-hvac-game__panel {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: 1;
-  overflow: auto;
+  min-height: 640px;
   padding: 28px;
   box-sizing: border-box;
   background: radial-gradient(ellipse at top right, #15334a, #0f172a 65%);
@@ -128,9 +138,12 @@
   gap: 12px;
 }
 
-.superpath-hvac-game__fields--two,
-.superpath-hvac-game__rules {
+.superpath-hvac-game__fields--two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.superpath-hvac-game__rules {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
 }
 
 .superpath-hvac-game__fields--three {

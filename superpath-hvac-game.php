@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function superpath_hvac_game_render() {
     return '<p>' . esc_html__(
-        'Awesome - PacTruck development plugin is working!',
+        'Fuck yeah, awesome - PacTruck development plugin is working!',
         'superpath-hvac-game'
     ) . '</p>';
 }

@@ -1,0 +1,24 @@
+.superpath-hvac-game {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.superpath-hvac-game__canvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #0f172a;
+  border-radius: 12px;
+}
+
+.superpath-hvac-game__canvas canvas {
+  display: block;
+}
+
+.superpath-hvac-game__canvas [data-game-status],
+.superpath-hvac-game__canvas noscript {
+  color: #f8fafc;
+  padding: 24px;
+}

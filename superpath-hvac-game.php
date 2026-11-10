@@ -11,15 +11,48 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Render the development connection check.
+ * Load the bundled game and render its WordPress container.
  *
  * @return string
  */
 function superpath_hvac_game_render() {
-    return '<p>' . esc_html__(
+    $script_path = __DIR__ . '/dist/game.js';
+    $style_path  = __DIR__ . '/dist/game.css';
+
+    if ( ! file_exists( $script_path ) || ! file_exists( $style_path ) ) {
+        return '<p>' . esc_html__(
+            'The game is temporarily unavailable.',
+            'superpath-hvac-game'
+        ) . '</p>';
+    }
+
+    // Enqueue only when the shortcode is rendered; WordPress avoids duplicates.
+    wp_enqueue_style(
+        'superpath-hvac-game',
+        wp_make_link_relative( plugins_url( 'dist/game.css', __FILE__ ) ),
+        array(),
+        (string) filemtime( $style_path )
+    );
+    wp_enqueue_script(
+        'superpath-hvac-game',
+        wp_make_link_relative( plugins_url( 'dist/game.js', __FILE__ ) ),
+        array(),
+        (string) filemtime( $script_path ),
+        true
+    );
+
+    $container_id = wp_unique_id( 'superpath-hvac-game-' );
+
+    return '<div class="superpath-hvac-game"><p>' . esc_html__(
         'Fuck yeah, awesome - PacTruck development plugin is working!',
         'superpath-hvac-game'
-    ) . '</p>';
+    ) . '</p><div id="' . esc_attr( $container_id ) . '" '
+        . 'class="superpath-hvac-game__canvas" data-superpath-hvac-game>'
+        . '<p data-game-status>' . esc_html__( 'Loading game…', 'superpath-hvac-game' ) . '</p>'
+        . '<noscript>' . esc_html__(
+            'Please enable JavaScript to play.',
+            'superpath-hvac-game'
+        ) . '</noscript></div></div>';
 }
 
 /**

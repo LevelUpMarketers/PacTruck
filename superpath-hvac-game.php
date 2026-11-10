@@ -43,19 +43,13 @@ function superpath_hvac_game_render() {
 
     $container_id = wp_unique_id( 'superpath-hvac-game-' );
 
-    return '<div class="superpath-hvac-game"><p>' . esc_html__(
-        'Fuck yeah, awesome - PacTruck development plugin is working!',
-        'superpath-hvac-game'
-    ) . '</p><div id="' . esc_attr( $container_id ) . '" '
+    return '<div class="superpath-hvac-game"><div id="' . esc_attr( $container_id ) . '" '
         . 'class="superpath-hvac-game__canvas" data-superpath-hvac-game>'
         . '<p data-game-status>' . esc_html__( 'Loading game…', 'superpath-hvac-game' ) . '</p>'
         . '<noscript>' . esc_html__(
             'Please enable JavaScript to play.',
             'superpath-hvac-game'
-        ) . '</noscript></div><p class="superpath-hvac-game__instructions">' . esc_html__(
-            'Click the game or press Tab to focus it. Drive with WASD or arrow keys. Release the keys to stop. If you hold two directions, the last one pressed wins.',
-            'superpath-hvac-game'
-        ) . '</p></div>';
+        ) . '</noscript></div></div>';
 }
 
 /**

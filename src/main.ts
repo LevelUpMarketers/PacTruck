@@ -19,7 +19,7 @@ for (const container of document.querySelectorAll<HTMLElement>('[data-superpath-
     backgroundColor: '#0f172a',
     banner: false,
     scene: [WelcomeScene],
-    // This preview has no controls yet and must not capture page input.
+    // DrivingControls listens only to the focused canvas, never the whole page.
     input: { keyboard: false, mouse: false, touch: false },
     scale: {
       mode: Phaser.Scale.FIT,
@@ -27,8 +27,9 @@ for (const container of document.querySelectorAll<HTMLElement>('[data-superpath-
     },
     callbacks: {
       postBoot: (game) => {
-        game.canvas.setAttribute('role', 'img');
-        game.canvas.setAttribute('aria-label', `${branding.title} game preview`);
+        game.canvas.tabIndex = 0;
+        game.canvas.setAttribute('role', 'application');
+        game.canvas.setAttribute('aria-label', `${branding.title} driving practice. Use WASD or arrow keys to drive.`);
         container.querySelector('[data-game-status]')?.remove();
       },
     },

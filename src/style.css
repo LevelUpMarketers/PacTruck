@@ -17,6 +17,17 @@
   display: block;
 }
 
+.superpath-hvac-game__canvas canvas:focus {
+  outline: 3px solid #fbbf24;
+  outline-offset: -4px;
+}
+
+.superpath-hvac-game__instructions {
+  margin-block: 8px 16px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .superpath-hvac-game__canvas [data-game-status],
 .superpath-hvac-game__canvas noscript {
   color: #f8fafc;

@@ -52,7 +52,10 @@ function superpath_hvac_game_render() {
         . '<noscript>' . esc_html__(
             'Please enable JavaScript to play.',
             'superpath-hvac-game'
-        ) . '</noscript></div></div>';
+        ) . '</noscript></div><p class="superpath-hvac-game__instructions">' . esc_html__(
+            'Click the game or press Tab to focus it. Drive with WASD or arrow keys. Release the keys to stop. If you hold two directions, the last one pressed wins.',
+            'superpath-hvac-game'
+        ) . '</p></div>';
 }
 
 /**

@@ -29,6 +29,10 @@ export class DrivingControls {
     return latestKey ? bindings[latestKey] : null;
   }
 
+  reset(): void {
+    this.clear();
+  }
+
   destroy(): void {
     this.clear();
     this.canvas.removeEventListener('keydown', this.onKeyDown);

@@ -5,5 +5,5 @@
     "outDir": ".test-build",
     "rootDir": "src"
   },
-  "include": ["src/world/MazeGrid.ts", "src/config/mazeLayout.ts", "src/config/driving.ts"]
+  "include": ["src/world/MazeGrid.ts", "src/config/*.ts", "src/state/*.ts"]
 }

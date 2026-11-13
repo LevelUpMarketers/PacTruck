@@ -14,11 +14,13 @@ export function createScenePanel(scene: Phaser.Scene, label: string, className =
   // Menus use the page width and natural content height; gameplay keeps its canvas size.
   container.classList.add('superpath-hvac-game__canvas--menu');
   container.append(panel);
+  scene.scale.getParentBounds();
   scene.scale.refresh();
 
   const removePanel = (): void => {
     panel.remove();
     container.classList.remove('superpath-hvac-game__canvas--menu');
+    scene.scale.getParentBounds();
     scene.scale.refresh();
     scene.events.off(Phaser.Scenes.Events.SHUTDOWN, removePanel);
     scene.events.off(Phaser.Scenes.Events.DESTROY, removePanel);

@@ -30,9 +30,9 @@ export class InstructionsScene extends Phaser.Scene {
         <section><h3>Get a temporary advertising advantage</h3>
           <p>Four Paid Advertising Pellets are available per month. Collect one to slow the other trucks to half speed for 8 seconds while yours keeps its normal speed. The remaining advertising pellets are disabled until it expires.</p></section>
         <section><h3>Drive your truck</h3>
-          <p>Click the game or Tab to focus it. Hold WASD or an arrow key to move; release to stop. Movement is up, down, left, or right. If two directions are held, the last one pressed wins.</p></section>
+          <p>Click the game or Tab to focus it. Hold WASD or an arrow key to move; release to stop. Movement is up, down, left, or right. If two directions are held, the last one pressed wins. Use Pause or Esc to pause; hiding the browser tab also pauses play.</p></section>
       </div>
-      <p class="superpath-hvac-game__hint">For now, Start Game opens the driving practice area. The maze, AI competitors, and monthly results are coming next.</p>
+      <p class="superpath-hvac-game__hint">This preview includes lead collection, PPC campaigns, and 12 months of play. AI competitors, business results, and investment choices are coming next. Until competitors join, PPC shows its campaign timer while your truck keeps its normal speed.</p>
       <div class="superpath-hvac-game__actions">
         <button type="button" class="superpath-hvac-game__button superpath-hvac-game__button--secondary" data-action="back">Back</button>
         <button type="button" class="superpath-hvac-game__button" data-action="start">Start Game!</button>

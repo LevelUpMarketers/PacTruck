@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".test-build",
+    "rootDir": "src"
+  },
+  "include": ["src/world/MazeGrid.ts", "src/config/mazeLayout.ts", "src/config/driving.ts"]
+}

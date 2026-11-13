@@ -1,13 +1,7 @@
 import Phaser from 'phaser';
 import { driving } from '../config/driving';
 import type { Direction } from '../input/DrivingControls';
-
-export interface DrivingArea {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-}
+import type { MazeGrid } from '../world/MazeGrid';
 
 const movement = {
   up: { x: 0, y: -1, angle: 0 },
@@ -41,18 +35,18 @@ export class Truck extends Phaser.GameObjects.Container {
     art.fillStyle(0xef4444);
     art.fillRect(-8, 12, 3, 2);
     art.fillRect(5, 12, 3, 2);
+    // Keep the authored roof-view art proportional to the collision footprint.
+    art.setScale(driving.truckFootprint / 28);
     this.add(art);
   }
 
-  drive(direction: Direction | null, distance: number, area: DrivingArea): void {
+  drive(direction: Direction | null, distance: number, maze: MazeGrid): void {
     if (!direction) return;
 
     const step = movement[direction];
     this.setAngle(step.angle);
 
-    // A rotation-safe footprint stays separate from the replaceable artwork.
-    const half = driving.truckFootprint / 2;
-    this.x = Phaser.Math.Clamp(this.x + step.x * distance, area.left + half, area.right - half);
-    this.y = Phaser.Math.Clamp(this.y + step.y * distance, area.top + half, area.bottom - half);
+    const next = maze.move({ x: this.x, y: this.y }, direction, distance, driving.truckFootprint);
+    this.setPosition(next.x, next.y);
   }
 }
